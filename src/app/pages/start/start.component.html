@@ -1,2 +1,5 @@
 <h1>SAY YES BOOMER</h1>
-<button (click)="goToGame()">Yes</button>
+<h2>Whats your name?*</h2>
+<input type="text" [(ngModel)]="name" required>
+<br><br>
+<button *ngIf="showTheButton && name != ''" (click)="goToExperiment()">Yes</button>

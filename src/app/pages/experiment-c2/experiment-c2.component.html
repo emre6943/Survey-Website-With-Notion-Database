@@ -1,0 +1,26 @@
+<div>
+    <h1>C2!</h1>
+    <h2>Hello {{name}}</h2>
+
+    <div *ngIf="atWord % 2 == 0">
+        <div>
+            <label> Write the first word that this word reminds you off: </label>
+            <p>{{realWord}}</p>
+        </div>
+
+        <input [(ngModel)]="realWordAnswer" >
+        <br><br>
+        <button *ngIf="showTheButton" (click)="next()">Next</button>
+    </div>
+
+    <div *ngIf="atWord % 2 == 1">
+        <div>
+            <label> Is this a word or noneWord: </label>
+            <p>{{randomWord}}</p>
+        </div>
+
+        <input [(ngModel)]="yesNoAnswer" >
+        <br><br>
+        <button *ngIf="showTheButton" (click)="next()">Next</button>
+    </div>
+</div>

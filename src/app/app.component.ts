@@ -10,10 +10,5 @@ export class AppComponent {
   title = 'meric';
 
   constructor(private router: Router) {
-
-  }
-
-  goToPage(url: string): void{
-    this.router.navigate([url]);
   }
 }

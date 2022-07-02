@@ -1,9 +1,0 @@
-export class WordData {
-    word: string
-    answer: string
-    
-    constructor (word: string, answer: string){
-        this.word = word
-        this.answer = answer
-    }
-}

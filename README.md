@@ -4,6 +4,14 @@
 
 ng generate component $nameofcomponent
 
+## To run the website and test it
+
+ng serve
+
+## To build the website and run on the cloud
+
+ng build
+
 ##
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
