@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { fakeWords, realWords } from 'src/app/keys';
 import { Router } from '@angular/router';
 import { C2RecordData } from 'src/app/models/c2Record.model';
+import { DOCUMENT } from '@angular/common';
+import { NotionApiService } from 'src/app/notion-api.service';
 
 @Component({
   selector: 'app-experiment-c2',
@@ -12,7 +14,7 @@ export class ExperimentC2Component implements OnInit {
   name: string = "";
 
   atWord: number = 0;
-  testNum: number = 3 * 2;
+  testNum: number = 1 * 2; // 10 * 2 ?
   showTheButton: boolean = false;
   showTheButtonAfterSeconds: number = 3; // 10; TODO
 
@@ -25,10 +27,13 @@ export class ExperimentC2Component implements OnInit {
   fakeWords: string[] = fakeWords.map(x => x);
 
   c2Records: C2RecordData[] = [];
+  elem: any;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, @Inject(DOCUMENT) private document: any, private notionService: NotionApiService) { }
 
   ngOnInit(): void {
+    this.elem = document.documentElement;
+
     this.name = this.router.url.split('/')[2];
     this.realWord = this.getRandomRealWord();
     this.randomWord = this.getRandomWord();
@@ -64,6 +69,12 @@ export class ExperimentC2Component implements OnInit {
     return word;
   }
 
+  submit(event: any) {
+    if(event.keyCode == 13 && this.showTheButton) {
+      this.next();
+    }
+  }
+
   next() {
     // only show the word
     if (this.atWord % 2 == 0) {
@@ -81,7 +92,8 @@ export class ExperimentC2Component implements OnInit {
     if (this.yesNoAnswer === "" || this.yesNoAnswer === null || this.yesNoAnswer === undefined) return;
     let nameWithIndex = `${this.name}-${Math.floor(this.atWord / 2)}`
     let record = new C2RecordData(nameWithIndex, this.realWord, this.realWordAnswer, this.randomWord, this.yesNoAnswer);
-    // TODO SAVE THE RECORD
+  
+    this.notionService.saveToC2Table(record);
     this.c2Records.push(record);
 
     this.atWord++;
@@ -99,6 +111,7 @@ export class ExperimentC2Component implements OnInit {
       console.log(fakeWords)
       console.log(this.fakeWords)
 
+      this.closeFullscreen();
       this.router.navigate([`done`]);
     }
 
@@ -113,5 +126,21 @@ export class ExperimentC2Component implements OnInit {
     setTimeout(() => {
       this.showTheButton = true;
     }, this.showTheButtonAfterSeconds * 1000);
+  }
+
+  /* Close fullscreen */
+  closeFullscreen() {
+    if (this.document.exitFullscreen) {
+      this.document.exitFullscreen();
+    } else if (this.document.mozCancelFullScreen) {
+      /* Firefox */
+      this.document.mozCancelFullScreen();
+    } else if (this.document.webkitExitFullscreen) {
+      /* Chrome, Safari and Opera */
+      this.document.webkitExitFullscreen();
+    } else if (this.document.msExitFullscreen) {
+      /* IE/Edge */
+      this.document.msExitFullscreen();
+    }
   }
 }

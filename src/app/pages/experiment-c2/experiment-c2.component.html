@@ -8,7 +8,7 @@
             <p>{{realWord}}</p>
         </div>
 
-        <input [(ngModel)]="realWordAnswer" >
+        <input [(ngModel)]="realWordAnswer" (keypress)="submit($event)" autofocus>
         <br><br>
         <button *ngIf="showTheButton" (click)="next()">Next</button>
     </div>
@@ -19,7 +19,7 @@
             <p>{{randomWord}}</p>
         </div>
 
-        <input [(ngModel)]="yesNoAnswer" >
+        <input [(ngModel)]="yesNoAnswer" (keypress)="submit($event)" autofocus>
         <br><br>
         <button *ngIf="showTheButton" (click)="next()">Next</button>
     </div>
