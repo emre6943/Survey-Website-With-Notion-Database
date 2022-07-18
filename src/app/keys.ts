@@ -5,7 +5,6 @@ export const keys = {
     c1ParentKey: "9da760da-cf06-449c-b994-5dcc3c87bf43",
     c1ExperimentTableKey: "9da760dacf06449cb9945dcc3c87bf43",
     c2ExperimentTableKey: "2b586e8c57f347899a849702b02229f3"
-    
 };
 
 //"https://www.notion.so/9da760dacf06449cb9945dcc3c87bf43?v=7aad99315688422292191ae87cf1d944",
@@ -38,3 +37,8 @@ export const wordPairs: string[] = [
     "elo hell - lol",
     "pog - reee"
 ];
+
+export const wordCombinations: string[][] = [
+    ["anen", "baban", "deden"],
+    ["impostor", "amogus", "sus"],
+]
