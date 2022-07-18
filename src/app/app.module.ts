@@ -9,6 +9,7 @@ import { ExperimentC2Component } from './pages/experiment-c2/experiment-c2.compo
 import { EndComponent } from './pages/end/end.component';
 import { FormsModule } from '@angular/forms';
 import { TestComponent } from './pages/test/test.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TestComponent } from './pages/test/test.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,8 +1,10 @@
-<h1 class="amcik">SAY YES BOOMER</h1>
-<h2>Whats your name?*</h2>
-<a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank" (click)="allowCross = true">You Must Go to This Link and Give Temporary Access</a>
-<br><br>
-<input type="text" [(ngModel)]="name" (keypress)="submit($event)" required>
-<br><br>
-<button *ngIf="showTheButton && allowCross && name != ''" (click)="goToExperiment()">Yes</button>
-<button (click)="goToTest()">Anen</button>
+<div class="ml-10">
+    <h1 class="amcik mb-10">SAY YES BOOMER</h1>
+    <h2>Whats your name?*</h2>
+    <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank" (click)="allowCross = true">You Must Go to This Link and Give Temporary Access</a>
+    <br><br>
+    <input type="text" [(ngModel)]="name" (keypress)="submit($event)" required>
+    <br><br>
+    <button *ngIf="showTheButton && allowCross && name != ''" (click)="goToExperiment()">Yes</button>
+    <button (click)="goToTest()">Anen</button>
+</div>
