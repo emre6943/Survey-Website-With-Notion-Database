@@ -42,6 +42,10 @@ export class StartComponent implements OnInit {
     this.openFullscreen();
   }
 
+  goToTest(): void {
+    this.router.navigate([`test`]);
+  }
+
   openFullscreen() {
     if (this.elem.requestFullscreen) {
       this.elem.requestFullscreen();

@@ -14,9 +14,9 @@ export class ExperimentC1Component implements OnInit {
   name: string = "";
 
   atWord: number = 0;
-  testNum: number = 1 * 2; // 10 * 2?
+  testNum: number = 3 * 2; // 10 * 2?
   showTheButton: boolean = false;
-  showTheButtonAfterSeconds: number = 3; // 10; TODO
+  showTheButtonAfterSeconds: number = 10; // 10; TODO
 
   wordPair: string = "";
   randomWord: string = "";
@@ -39,7 +39,7 @@ export class ExperimentC1Component implements OnInit {
     this.randomWord = this.getRandomWord();
 
     setTimeout(() => {
-      this.showTheButton = true;
+      this.next()
     }, this.showTheButtonAfterSeconds * 1000);
   }
 
@@ -93,7 +93,7 @@ export class ExperimentC1Component implements OnInit {
       // button timer
       this.showTheButton = false;
       setTimeout(() => {
-        this.showTheButton = true;
+        this.next();
       }, this.showTheButtonAfterSeconds * 1000);
       return;
     } 
@@ -137,7 +137,7 @@ export class ExperimentC1Component implements OnInit {
     // button timer
     this.showTheButton = false;
     setTimeout(() => {
-      this.showTheButton = true;
+      this.next();
     }, this.showTheButtonAfterSeconds * 1000);
   }
 
