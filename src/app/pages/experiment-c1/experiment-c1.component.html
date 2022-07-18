@@ -17,7 +17,7 @@
             <p>{{randomWord}}</p>
         </div>
 
-        <input [(ngModel)]="yesNoAnswer" (keypress)="submit($event)">
+        <input [(ngModel)]="yesNoAnswer" (keypress)="submit($event)" autofocus>
         <br><br>
         <button *ngIf="showTheButton" (click)="next()">Next</button>
     </div>
