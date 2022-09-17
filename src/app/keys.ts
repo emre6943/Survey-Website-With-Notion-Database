@@ -22,7 +22,7 @@ export const realWords: string[] = [
     "impostor"
 ];
 
-export const  fakeWords: string[] = [
+export const fakeWords: string[] = [
     "amogus",
     "susppicious",
     "keke",
