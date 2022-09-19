@@ -57,6 +57,9 @@ saveToC1Table (c1Data : C1RecordData) {
                         }
                     }
                 ]
+            },
+            "Response Time": {
+                "number" : ${c1Data.answerGivenInMs}
             }
         }
     }`

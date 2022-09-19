@@ -14,12 +14,7 @@ export const realWords: string[] = [
     "meric",
     "kek",
     "sus",
-    "amongus",
-    "elo hell",
-    "pog",
-    "noooo",
-    "life",
-    "impostor"
+    "amongus"
 ];
 
 export const fakeWords: string[] = [
@@ -30,15 +25,8 @@ export const fakeWords: string[] = [
 ];
 
 export const wordPairs: string[] = [
-    "meric - ampute",
-    "kek - easy",
-    "sus - sus",
-    "amongus - sus",
-    "elo hell - lol",
-    "pog - reee"
-];
-
-export const wordCombinations: string[][] = [
-    ["anen", "baban", "deden"],
-    ["impostor", "amogus", "sus"],
+    "ampute",
+    "easy",
+    "susangus",
+    "sus"
 ]
