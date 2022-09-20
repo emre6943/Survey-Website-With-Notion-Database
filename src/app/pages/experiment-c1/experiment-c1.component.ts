@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { fakeWords, wordPairs, realWords } from 'src/app/keys';
 import { Router } from '@angular/router';
 import { C1RecordData } from 'src/app/models/c1Record.model';
@@ -31,6 +31,23 @@ export class ExperimentC1Component implements OnInit {
   wordPairs: string[] = wordPairs.map(x => x);
 
   c1Records: C1RecordData[] = [];
+
+  // this ads a keyboard listener to this component so in each keypress this will be called
+  @HostListener('window:keydown', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    // if the test is at the second stage chosing word non word
+    if (this.atWord % 2 == 1) {
+      // pressed Z
+      if( event.keyCode == 90) {
+        this.wordNonWordChoiceMade('Word');
+      }
+      // pressed m
+      else if (event.keyCode == 77) {
+        this.wordNonWordChoiceMade('NonWord');
+      }
+    }
+    return;
+  }
 
   constructor(private router : Router, @Inject(DOCUMENT) private document: any, private notionService: NotionApiService) { }
 
@@ -104,6 +121,7 @@ export class ExperimentC1Component implements OnInit {
       this.atWord++;
       // button timer
       this.showTheButton = false;
+
       this.yesNoAnswerShownAtTime = Date.now();
       return;
     } 
@@ -112,12 +130,11 @@ export class ExperimentC1Component implements OnInit {
     if (this.yesNoAnswer === "" || this.yesNoAnswer === null || this.yesNoAnswer === undefined) return;
     let nameWithIndex = `${this.name}-${Math.floor(this.atWord / 2)}`
     let record = new C1RecordData(nameWithIndex, this.wordPair, this.randomWord, this.yesNoAnswer, Date.now()-this.yesNoAnswerShownAtTime);
-    
-    this.notionService.saveToC1Table(record);
-    this.c1Records.push(record);
-  
 
     this.atWord = this.atWord + 1;
+
+    this.notionService.saveToC1Table(record);
+    this.c1Records.push(record);
 
     // if at the last word we exit
     if (this.atWord == this.testNum) {

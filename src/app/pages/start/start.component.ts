@@ -38,6 +38,8 @@ export class StartComponent implements OnInit {
       return;
     }
     let testNum = Math.floor(Math.random() * 2) + 1;
+    // todo remove this line
+    testNum = 1
     this.router.navigate([`c${testNum.toString()}/${this.name}`]);
     this.openFullscreen();
   }
